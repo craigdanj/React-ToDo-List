@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ListHeader from './ListHeader';
 import ToDoList from './ToDoList';
+import axios from 'axios';
+
 
 class ListWrapper extends Component {
 
@@ -8,23 +10,46 @@ class ListWrapper extends Component {
 		super(props);
 
 		this.state = {
-			items: [
-					{
-						text: "one",
-						checked: false
-					},{
-						text: "two",
-						checked: true
-					},{
-						text: "three",
-						checked: false
-					}
-				]
+			items: []
 		}
 
 		this.removeItem = this.removeItem.bind(this);
 		this.addItem = this.addItem.bind(this);
 		this.checkItem = this.checkItem.bind(this);
+	}
+
+	componentWillMount() {
+		//https://jsonplaceholder.typicode.com/todos
+
+		var responseItems = [];
+
+		axios.get("https://jsonplaceholder.typicode.com/todos")
+		.then(response => {
+			// handle success
+			console.log(response.data);
+			responseItems = response.data.slice(0,3)
+			console.log(responseItems);
+
+			for (var i = responseItems.length - 1; i >= 0; i--) {
+				responseItems[i].checked = false;
+				responseItems[i].text = responseItems[i].title;
+			}
+
+			this.setItems(responseItems);
+
+			
+		})
+		.catch(error => {
+			// handle error
+			console.log(error);
+		})
+
+	}
+
+	setItems(items) {
+		this.setState({
+			items: items
+		})
 	}
 
 	addItem(text) {
