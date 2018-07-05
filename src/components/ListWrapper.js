@@ -19,10 +19,10 @@ class ListWrapper extends Component {
 	}
 
 	componentWillMount() {
-		//https://jsonplaceholder.typicode.com/todos
 
 		var responseItems = [];
 
+		//fetch the current list of todos from the server
 		axios.get("https://jsonplaceholder.typicode.com/todos")
 		.then(response => {
 			// handle success
