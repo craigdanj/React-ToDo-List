@@ -25,7 +25,7 @@ class ListHeader extends Component {
 	}
 
 	addItem() {
-		this.props.addCallback(this.state.text)
+		this.props.addItem(this.state.text)
 		this.setState({
 			text: ""
 		})
@@ -35,7 +35,7 @@ class ListHeader extends Component {
 	    return (
 			<div>
 				<input type="text" value={this.state.text} onChange={this.updateText}/>
-				<button onClick={() => this.props.addItem(this.state.text)}>Add</button>
+				<button onClick={() => this.addItem()}>Add</button>
 			</div>
 	    );
     }
