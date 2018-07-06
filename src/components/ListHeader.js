@@ -11,7 +11,6 @@ class ListHeader extends Component {
 			text: ""
 		}
 
-
 		this.updateText = this.updateText.bind(this);
 		this.addItem = this.addItem.bind(this);
 		//Alternattively you can use arrow functions

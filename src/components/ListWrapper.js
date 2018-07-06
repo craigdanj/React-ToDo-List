@@ -81,6 +81,9 @@ class ListWrapper extends Component {
 	}
 
 	render() {
+
+		console.log("Render of ListWrapper",this.props.items);
+
 	    return (
 			<div className="list-wrapper">
 				<ListHeader addCallback={this.addItem}/>
@@ -96,4 +99,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, null)(ListWrapper);
+export default connect(mapStateToProps)(ListWrapper);

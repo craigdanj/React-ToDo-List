@@ -22,12 +22,15 @@ const initialState = {
 
 
 const reducer = (state = initialState, action) => {
+
+	// console.log("State Old: ",state);
 	switch(action.type) {
 		case "ADD_TODO": 
 			console.log(action);
 			const newState = {...state};
 			newState.items.push({text: action.payload.text, checked: false});
-			console.log(newState);
+			
+			// console.log(newState);
 
 			return newState;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ToDoItem from './ToDoItem';
 
 function ToDoList(props) {
-
+	console.log(props)
 	function removeItemCallback(index) {
 		props.removeItemCallback(index);
 	}
