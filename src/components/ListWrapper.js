@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ListHeader from './ListHeader';
 import ToDoList from './ToDoList';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 
 class ListWrapper extends Component {
@@ -87,4 +88,10 @@ class ListWrapper extends Component {
 	}
 }
 
-export default ListWrapper;
+const mapStateToProps = (state) => {
+	return {
+		items: state.items
+	}
+}
+
+export default connect(mapStateToProps, null)(ListWrapper);
