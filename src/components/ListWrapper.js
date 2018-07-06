@@ -17,40 +17,42 @@ class ListWrapper extends Component {
 		this.removeItem = this.removeItem.bind(this);
 		this.addItem = this.addItem.bind(this);
 		this.checkItem = this.checkItem.bind(this);
+
+		console.log(this)
 	}
+
 
 	componentWillMount() {
 
-		var responseItems = [];
+		// var responseItems = [];
 
-		//fetch the current list of todos from the server
-		axios.get("https://jsonplaceholder.typicode.com/todos")
-		.then(response => {
-			// handle success
-			console.log(response.data);
-			responseItems = response.data.slice(0,3)
-			console.log(responseItems);
+		// //fetch the current list of todos from the server
+		// axios.get("https://jsonplaceholder.typicode.com/todos")
+		// .then(response => {
+		// 	// handle success
+		// 	console.log(response.data);
+		// 	responseItems = response.data.slice(0,3)
+		// 	console.log(responseItems);
 
-			for (var i = responseItems.length - 1; i >= 0; i--) {
-				responseItems[i].checked = false;
-				responseItems[i].text = responseItems[i].title;
-			}
+		// 	for (var i = responseItems.length - 1; i >= 0; i--) {
+		// 		responseItems[i].checked = false;
+		// 		responseItems[i].text = responseItems[i].title;
+		// 	}
 
-			this.setItems(responseItems);
-
+		// 	this.setItems(responseItems);
 			
-		})
-		.catch(error => {
-			// handle error
-			console.log(error);
-		})
+		// })
+		// .catch(error => {
+		// 	// handle error
+		// 	console.log(error);
+		// })
 
 	}
 
 	setItems(items) {
-		this.setState({
-			items: items
-		})
+		// this.setState({
+		// 	items: items
+		// })
 	}
 
 	addItem(text) {
@@ -82,7 +84,7 @@ class ListWrapper extends Component {
 	    return (
 			<div className="list-wrapper">
 				<ListHeader addCallback={this.addItem}/>
-				<ToDoList items={this.state.items} removeItemCallback={this.removeItem} checkItemCallback={this.checkItem}/>
+				<ToDoList items={this.props.items} removeItemCallback={this.removeItem} checkItemCallback={this.checkItem}/>
 			</div>
 	    );
 	}
