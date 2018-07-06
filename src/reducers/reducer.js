@@ -18,10 +18,22 @@ const initialState = {
 			checked: false
 		}
 	]
-}
+};
+
 
 const reducer = (state = initialState, action) => {
-	return state;
+	switch(action.type) {
+		case "ADD_TODO": 
+			console.log(action);
+			const newState = {...state};
+			newState.items.push({text: action.payload.text, checked: false});
+			console.log(newState);
+
+			return newState;
+
+		default: return state
+
+	}
 };
 
 export default reducer;

@@ -10,9 +10,9 @@ class ListWrapper extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			items: []
-		}
+		// this.state = {
+		// 	items: []
+		// }
 
 		this.removeItem = this.removeItem.bind(this);
 		this.addItem = this.addItem.bind(this);

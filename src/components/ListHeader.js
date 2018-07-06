@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 
 class ListHeader extends Component {
 
@@ -33,10 +35,17 @@ class ListHeader extends Component {
 	    return (
 			<div>
 				<input type="text" value={this.state.text} onChange={this.updateText}/>
-				<button onClick={this.addItem}>Add</button>
+				<button onClick={() => this.props.addItem(this.state.text)}>Add</button>
 			</div>
 	    );
     }
 }
 
-export default ListHeader;
+
+const mapDispatchToProps = dispatch => {
+	return {
+		addItem: text => dispatch({type: "ADD_TODO", payload: { text: text}})
+	}
+}
+
+export default connect(null, mapDispatchToProps)(ListHeader);
