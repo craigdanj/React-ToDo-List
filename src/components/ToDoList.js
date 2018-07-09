@@ -8,7 +8,7 @@ function ToDoList(props) {
 	}
 
 	const items = props.items.map((item,index) => 
-			<ToDoItem text={item.text} key={index} index={index} checkItem={checkItemCallback} checked={item.checked}/>
+			<ToDoItem text={item.text} key={index} index={index} checked={item.checked}/>
 		);
 
     return (

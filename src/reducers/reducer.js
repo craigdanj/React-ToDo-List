@@ -24,12 +24,20 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
 	console.log("Old State: ",state);
+	console.log("Action: ",action);
 
 	switch(action.type) {
 
-		case "ADD_TODO": 
+		case "ADD_TODO":
 			var newState = {...state};
 			newState.items = [...newState.items, {text: action.payload.text, checked: false}];
+
+			return newState;
+
+		case "TOGGLE_TODO":
+
+			var newState = {...state};
+			newState.items[action.payload.index].checked = !newState.items[action.payload.index].checked;
 
 			return newState;
 

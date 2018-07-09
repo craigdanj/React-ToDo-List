@@ -5,23 +5,12 @@ class ToDoItem extends Component {
 
 	constructor(props) {
 		super(props);
-
-		// this.removeItem = this.removeItem.bind(this);
-		this.checkItem = this.checkItem.bind(this);
-	}
-
-	// removeItem() {
-	// 	this.props.removeItem(this.props.index)
-	// }
-
-	checkItem() {
-		this.props.checkItem(this.props.index)
 	}
 
 	render() {
 	    return (
 			<li>
-				<input type="checkbox" checked={this.props.checked} onChange={this.checkItem.bind(this)}/>
+				<input type="checkbox" checked={this.props.checked} onChange={() => this.props.checkItem(this.props.index)}/>
 
 				&nbsp;
 
@@ -41,7 +30,8 @@ class ToDoItem extends Component {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		removeItem: value => dispatch({type: "REMOVE_TODO", payload: {index: value}})
+		removeItem: value => dispatch({type: "REMOVE_TODO", payload: {index: value}}),
+		checkItem: value => dispatch({type: "TOGGLE_TODO", payload: {index: value}})
 	}
 }
 
