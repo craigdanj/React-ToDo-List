@@ -48,7 +48,6 @@ const getTodoActionCreator = () => {
 				items: responseItems
 			}});
 
-
 		})
 		.catch(error => {
 			// handle error
