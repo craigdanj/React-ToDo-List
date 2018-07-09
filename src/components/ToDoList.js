@@ -18,7 +18,7 @@ function ToDoList(props) {
 				<ul className="todo-list">
 					{items}
 				</ul>
-	    
+
 	    	) : (
 	    		<p>You currently have no items in your list.</p>
 	    	)}

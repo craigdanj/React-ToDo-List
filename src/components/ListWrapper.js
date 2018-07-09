@@ -11,9 +11,8 @@ class ListWrapper extends Component {
 		super(props);
 	}
 
-
-	componentWillMount() {
-
+	componentDidMount() {
+		this.props.getTodos();
 		// var responseItems = [];
 
 		// //fetch the current list of todos from the server
@@ -30,7 +29,7 @@ class ListWrapper extends Component {
 		// 	}
 
 		// 	this.setItems(responseItems);
-			
+
 		// })
 		// .catch(error => {
 		// 	// handle error
@@ -50,10 +49,53 @@ class ListWrapper extends Component {
 	}
 }
 
+const getTodoActionCreator = () => {
+	console.log("Action creator");
+
+	return function(dispatch) {
+		axios.get("https://jsonplaceholder.typicode.com/todos")
+		.then(response => {
+			// handle success
+			console.log(response.data);
+			var responseItems = response.data.slice(0,3)
+			console.log(responseItems);
+
+			
+
+			for (var i = responseItems.length - 1; i >= 0; i--) {
+				responseItems[i].checked = false;
+				responseItems[i].text = responseItems[i].title;
+			}
+
+			dispatch({type: "INITIAL_TODO_LIST", payload: {
+				items: responseItems
+			}});
+
+			// this.setItems(responseItems);
+
+		})
+		.catch(error => {
+			// handle error
+			console.log(error);
+		})
+	}
+		//fetch the current list of todos from the server
+		
+
+
+	return {type: "INITIAL_TODO_LIST", payload: {}}
+}
+
 const mapStateToProps = (state) => {
 	return {
 		items: state.items
 	}
 }
 
-export default connect(mapStateToProps)(ListWrapper);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getTodos: () => dispatch(getTodoActionCreator())
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListWrapper);

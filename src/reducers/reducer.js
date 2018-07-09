@@ -1,22 +1,6 @@
 //Initial state
 const initialState = {
 	items: [
-		{
-			text: "todo1",
-			checked: false
-		},{
-			text: "todo2",
-			checked: false
-		},{
-			text: "todo3",
-			checked: false
-		},{
-			text: "todo4",
-			checked: false
-		},{
-			text: "todo5",
-			checked: false
-		}
 	]
 };
 
@@ -27,7 +11,10 @@ const reducer = (state = initialState, action) => {
 	console.log("Action: ",action);
 
 	switch(action.type) {
+		case "INITIAL_TODO_LIST" :
+			var newState = {...state, items:action.payload.items};
 
+			return newState;
 		case "ADD_TODO":
 			var newState = {...state};
 			newState.items = [...newState.items, {text: action.payload.text, checked: false}];
@@ -37,7 +24,6 @@ const reducer = (state = initialState, action) => {
 		case "TOGGLE_TODO":
 
 			var newState = {...state};
-			// var newState = Object.assign({}, state);
 			
 			newState.items = [
 				...state.items.slice(0, action.payload.index),
