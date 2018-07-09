@@ -9,12 +9,6 @@ class ListWrapper extends Component {
 
 	constructor(props) {
 		super(props);
-
-		// this.removeItem = this.removeItem.bind(this);
-		// this.addItem = this.addItem.bind(this);
-		// this.checkItem = this.checkItem.bind(this);
-
-		console.log(this)
 	}
 
 
@@ -44,37 +38,6 @@ class ListWrapper extends Component {
 		// })
 
 	}
-
-	setItems(items) {
-		// this.setState({
-		// 	items: items
-		// })
-	}
-
-	// addItem(text) {
-
-	// 	this.setState( prevState => ({
-	// 		items: [...prevState.items, {
-	// 			text: text,
-	// 			checked: false
-	// 		}]
-	// 	}))
-
-	// }
-
-	// removeItem(index) {
-	// 	this.setState( prevState => ({
-	// 		items: prevState.items.filter((val, i) => i !== index)
-	// 	}))
-	// }
-
-	// checkItem(index) {
-	// 	this.setState( prevState => {
-	// 		const newItems = [...prevState.items];
-	// 		newItems[index].checked = newItems[index].checked? false: true;
-	// 		return {items: newItems}
-	// 	})
-	// }
 
 	render() {
 
