@@ -37,8 +37,17 @@ const reducer = (state = initialState, action) => {
 		case "TOGGLE_TODO":
 
 			var newState = {...state};
+			// var newState = Object.assign({}, state);
+			
+			newState.items = [
+				...state.items.slice(0, action.payload.index),
+				...state.items.slice(action.payload.index, action.payload.index+1),
+				...state.items.slice(action.payload.index+1)
+			]
+
 			newState.items[action.payload.index].checked = !newState.items[action.payload.index].checked;
 
+			console.log(newState);
 			return newState;
 
 		case "REMOVE_TODO":
