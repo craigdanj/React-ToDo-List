@@ -13,29 +13,6 @@ class ListWrapper extends Component {
 
 	componentDidMount() {
 		this.props.getTodos();
-		// var responseItems = [];
-
-		// //fetch the current list of todos from the server
-		// axios.get("https://jsonplaceholder.typicode.com/todos")
-		// .then(response => {
-		// 	// handle success
-		// 	console.log(response.data);
-		// 	responseItems = response.data.slice(0,3)
-		// 	console.log(responseItems);
-
-		// 	for (var i = responseItems.length - 1; i >= 0; i--) {
-		// 		responseItems[i].checked = false;
-		// 		responseItems[i].text = responseItems[i].title;
-		// 	}
-
-		// 	this.setItems(responseItems);
-
-		// })
-		// .catch(error => {
-		// 	// handle error
-		// 	console.log(error);
-		// })
-
 	}
 
 	render() {
@@ -50,8 +27,8 @@ class ListWrapper extends Component {
 }
 
 const getTodoActionCreator = () => {
-	console.log("Action creator");
-
+	
+	//fetch the current list of todos from the server
 	return function(dispatch) {
 		axios.get("https://jsonplaceholder.typicode.com/todos")
 		.then(response => {
@@ -71,7 +48,6 @@ const getTodoActionCreator = () => {
 				items: responseItems
 			}});
 
-			// this.setItems(responseItems);
 
 		})
 		.catch(error => {
@@ -79,9 +55,6 @@ const getTodoActionCreator = () => {
 			console.log(error);
 		})
 	}
-		//fetch the current list of todos from the server
-		
-
 
 	return {type: "INITIAL_TODO_LIST", payload: {}}
 }
