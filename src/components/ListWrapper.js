@@ -10,11 +10,7 @@ class ListWrapper extends Component {
 	constructor(props) {
 		super(props);
 
-		// this.state = {
-		// 	items: []
-		// }
-
-		this.removeItem = this.removeItem.bind(this);
+		// this.removeItem = this.removeItem.bind(this);
 		this.addItem = this.addItem.bind(this);
 		this.checkItem = this.checkItem.bind(this);
 
@@ -66,11 +62,11 @@ class ListWrapper extends Component {
 
 	}
 
-	removeItem(index) {
-		this.setState( prevState => ({
-			items: prevState.items.filter((val, i) => i !== index)
-		}))
-	}
+	// removeItem(index) {
+	// 	this.setState( prevState => ({
+	// 		items: prevState.items.filter((val, i) => i !== index)
+	// 	}))
+	// }
 
 	checkItem(index) {
 		this.setState( prevState => {
@@ -87,7 +83,7 @@ class ListWrapper extends Component {
 	    return (
 			<div className="list-wrapper">
 				<ListHeader addCallback={this.addItem}/>
-				<ToDoList items={this.props.items} removeItemCallback={this.removeItem} checkItemCallback={this.checkItem}/>
+				<ToDoList items={this.props.items} checkItemCallback={this.checkItem}/>
 			</div>
 	    );
 	}

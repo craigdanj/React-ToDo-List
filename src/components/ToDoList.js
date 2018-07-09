@@ -2,17 +2,13 @@ import React from 'react';
 import ToDoItem from './ToDoItem';
 
 function ToDoList(props) {
-	console.log(props)
-	function removeItemCallback(index) {
-		props.removeItemCallback(index);
-	}
 
 	function checkItemCallback(index) {
 		props.checkItemCallback(index);
 	}
 
 	const items = props.items.map((item,index) => 
-			<ToDoItem text={item.text} key={index} index={index} removeItem={removeItemCallback} checkItem={checkItemCallback} checked={item.checked}/>
+			<ToDoItem text={item.text} key={index} index={index} checkItem={checkItemCallback} checked={item.checked}/>
 		);
 
     return (
@@ -30,5 +26,7 @@ function ToDoList(props) {
 
     )
 }
+
+
 
 export default ToDoList;
