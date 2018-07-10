@@ -1,5 +1,6 @@
 import React from 'react';
 import ToDoItem from './ToDoItem';
+import {Alert} from 'reactstrap'
 
 function ToDoList(props) {
 
@@ -20,7 +21,9 @@ function ToDoList(props) {
 				</ul>
 
 	    	) : (
-	    		<p>You currently have no items in your list.</p>
+				<Alert color="light">
+					You currently have no items in your list.
+				</Alert>
 	    	)}
     	</div>
 
