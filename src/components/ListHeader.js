@@ -22,10 +22,12 @@ class ListHeader extends Component {
 	}
 
 	addItem() {
-		this.props.addItem(this.state.text)
-		this.setState({
-			text: ""
-		})
+		if(this.state.text.length) {	
+			this.props.addItem(this.state.text)
+			this.setState({
+				text: ""
+			})
+		}
 	}
 
     render() {
@@ -34,7 +36,7 @@ class ListHeader extends Component {
 				<div className="col">
 					<Input type="text" value={this.state.text} onChange={this.updateText}/>
 				</div>
-				
+
 				<div className="col">
 					<Button onClick={() => this.addItem()} color="success">Add</Button>
 				</div>
