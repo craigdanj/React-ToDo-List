@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import { Button, Input } from 'reactstrap';
 
 class ListHeader extends Component {
 
@@ -32,9 +32,13 @@ class ListHeader extends Component {
 
     render() {
 	    return (
-			<div>
-				<input type="text" value={this.state.text} onChange={this.updateText}/>
-				<button onClick={() => this.addItem()}>Add</button>
+			<div className="row">
+				<div className="col">
+					<Input type="text" value={this.state.text} onChange={this.updateText}/>
+				</div>
+				<div className="col">
+					<Button onClick={() => this.addItem()}>Add</Button>
+				</div>
 			</div>
 	    );
     }

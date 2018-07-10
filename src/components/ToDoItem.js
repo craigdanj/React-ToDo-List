@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { Button } from 'reactstrap';
 
 class ToDoItem extends Component {
 
@@ -19,10 +20,10 @@ class ToDoItem extends Component {
 					:
 					<span>{this.props.text}</span>
 				}
-								
+			
 				&nbsp;
-				
-				<button onClick={() => this.props.removeItem(this.props.index)}>x</button>
+
+				<Button onClick={() => this.props.removeItem(this.props.index)} color="danger">x</Button>
 			</li>
 	    );
 	}
