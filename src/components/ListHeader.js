@@ -37,7 +37,7 @@ class ListHeader extends Component {
 					<Input type="text" value={this.state.text} onChange={this.updateText}/>
 				</div>
 				<div className="col">
-					<Button onClick={() => this.addItem()}>Add</Button>
+					<Button onClick={() => this.addItem()} color="primary">Add</Button>
 				</div>
 			</div>
 	    );
