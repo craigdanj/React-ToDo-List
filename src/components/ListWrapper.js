@@ -33,11 +33,7 @@ const getTodoActionCreator = () => {
 		axios.get("https://jsonplaceholder.typicode.com/todos")
 		.then(response => {
 			// handle success
-			console.log(response.data);
 			var responseItems = response.data.slice(0,3)
-			console.log(responseItems);
-
-			
 
 			for (var i = responseItems.length - 1; i >= 0; i--) {
 				responseItems[i].checked = false;

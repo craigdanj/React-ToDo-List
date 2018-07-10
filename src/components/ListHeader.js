@@ -13,8 +13,6 @@ class ListHeader extends Component {
 
 		this.updateText = this.updateText.bind(this);
 		this.addItem = this.addItem.bind(this);
-		//Alternattively you can use arrow functions
-
 	}
 
 	updateText(event) {
@@ -36,6 +34,7 @@ class ListHeader extends Component {
 				<div className="col">
 					<Input type="text" value={this.state.text} onChange={this.updateText}/>
 				</div>
+				
 				<div className="col">
 					<Button onClick={() => this.addItem()} color="success">Add</Button>
 				</div>
