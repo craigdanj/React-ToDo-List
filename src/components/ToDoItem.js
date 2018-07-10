@@ -1,11 +1,29 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Button } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class ToDoItem extends Component {
 
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			modal: false
+		}
+
+		this.toggleModal = this.toggleModal.bind(this);
+		this.removeItem = this.removeItem.bind(this);
+	}
+
+	toggleModal() {
+		this.setState({
+			modal: !this.state.modal
+		});
+	}
+
+	removeItem() {
+		this.props.removeItem(this.props.index);
+		this.toggleModal()
 	}
 
 	render() {
@@ -20,10 +38,26 @@ class ToDoItem extends Component {
 					:
 					<span>{this.props.text}</span>
 				}
-			
+
 				&nbsp;
 
-				<Button onClick={() => this.props.removeItem(this.props.index)} color="danger">x</Button>
+				<Button onClick={this.toggleModal} color="danger">x</Button>
+
+				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+					
+					<ModalHeader toggle={this.toggleModal}>
+						Are you sure you want to delete this item?
+					</ModalHeader>
+					
+					<ModalBody>
+						If you confirm, this action cannot be undone.
+					</ModalBody>
+					
+					<ModalFooter>
+						<Button color="danger" onClick={this.removeItem}>Remove</Button> {' '}
+						<Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+					</ModalFooter>
+				</Modal>
 			</li>
 	    );
 	}
